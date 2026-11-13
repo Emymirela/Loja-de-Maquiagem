@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Meus Dados{% endblock %}
+
+{% block content %}
+<div class="card-dados">
+    <h2 class="mb-4">👤 Meus Dados</h2>
+
+    <p>
+        <strong>Nome</strong>
+        <span>{{ usuario.nome }}</span>
+    </p>
+    <p>
+        <strong>Email</strong>
+        <span>{{ usuario.email }}</span>
+    </p>
+    <p>
+        <strong>Telefone</strong>
+        <span>{{ usuario.telefone or 'Não informado' }}</span>
+    </p>
+
+    <div class="d-flex gap-2 mt-4 flex-wrap">
+        <a href="{{ url_for('main.index') }}" class="btn btn-secondary">
+            Voltar
+        </a>
+
+        <a href="{{ url_for('user.editar_usuario', user_id=usuario.id) }}" class="btn btn-primary">
+            Editar Dados
+        </a>
+
+        <form action="{{ url_for('user.deletar_usuario', user_id=usuario.id) }}"
+              method="post"
+              class="d-inline m-0 p-0 border-0 shadow-none bg-transparent"
+              onsubmit="return confirm('Tem certeza que deseja excluir sua conta?');">
+            <button type="submit" class="btn btn-danger">
+                Excluir Conta
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

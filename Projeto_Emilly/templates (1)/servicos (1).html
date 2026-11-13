@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Serviços | Beauty Makeup{% endblock %}
+
+{% block content %}
+    <h1>✨ Nossos Serviços de Beleza</h1>
+    <p>Conheça os serviços especializados oferecidos para você e sua beleza.</p>
+
+    <div class="row g-4 mt-2">
+        <div class="col-md-4">
+            <div class="card p-4 h-100 border-0 shadow-sm" style="border-radius: var(--radius); background: var(--surface);">
+                <div class="fs-2 mb-2">💄</div>
+                <h5>Maquiagem Profissional</h5>
+                <p class="text-muted">Produção completa para festas, noivas, formaturas e eventos sociais.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-4 h-100 border-0 shadow-sm" style="border-radius: var(--radius); background: var(--surface);">
+                <div class="fs-2 mb-2">👁️</div>
+                <h5>Design de Sobrancelhas</h5>
+                <p class="text-muted">Alinhamento, micropigmentação suave e aplicação de henna personalizada.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-4 h-100 border-0 shadow-sm" style="border-radius: var(--radius); background: var(--surface);">
+                <div class="fs-2 mb-2">🧴</div>
+                <h5>Consultoria de Visagismo</h5>
+                <p class="text-muted">Análise de tom de pele e indicação dos melhores produtos e cores para você.</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

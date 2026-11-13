@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Cadastrar Maquiagem{% endblock %}
+
+{% block content %}
+    <h1>💄 Cadastrar Produto de Maquiagem</h1>
+    <p>Preencha os dados abaixo para adicionar um novo item de maquiagem ao seu estoque.</p>
+
+    <form action="" method="post">
+        <label for="nome">Nome do Produto:</label>
+        <input type="text" id="nome" name="nome" placeholder="Ex: Batom Líquido Matte, Base Facial HD..." required>
+
+        <label for="marca">Marca:</label>
+        <input type="text" id="marca" name="marca" placeholder="Ex: Ruby Rose, MAC, Bruna Tavares, Maybelline..." required>
+
+        <label for="categoria">Categoria:</label>
+        <select id="categoria" name="categoria" required>
+            <option value="" disabled selected>Selecione a categoria...</option>
+            <option value="Lábios">Lábios (Batom, Gloss, Lip Tint)</option>
+            <option value="Rosto / Pele">Rosto / Pele (Base, Corretivo, Pó, Primer)</option>
+            <option value="Olhos">Olhos (Máscara de Cílios, Delineador, Sombra)</option>
+            <option value="Blush & Iluminador">Blush & Iluminador</option>
+            <option value="Sobrancelhas">Sobrancelhas</option>
+            <option value="Pincéis & Acessórios">Pincéis & Acessórios</option>
+            <option value="Skincare">Skincare & Preparação</option>
+            <option value="Outros">Outros</option>
+        </select>
+
+        <label for="tom_cor">Tom / Cor:</label>
+        <input type="text" id="tom_cor" name="tom_cor" placeholder="Ex: Nude Rosé, Bege Médio 02, Vermelho Intenso...">
+
+        <label for="descricao">Descrição / Acabamento:</label>
+        <textarea id="descricao" name="descricao" rows="3" placeholder="Ex: Acabamento matte aveludado, longa duração e alta pigmentação."></textarea>
+
+        <div class="row">
+            <div class="col-md-6">
+                <label for="preco">Preço (R$):</label>
+                <input type="number" id="preco" name="preco" step="0.01" min="0" placeholder="0.00" required>
+            </div>
+            <div class="col-md-6">
+                <label for="quantidade">Qtd em Estoque:</label>
+                <input type="number" id="quantidade" name="quantidade" min="0" placeholder="0" required>
+            </div>
+        </div>
+
+        <div class="d-flex align-items-center gap-3 mt-3">
+            <input type="submit" value="Cadastrar Maquiagem">
+            <a href="{{ url_for('product.listar_produtos') }}" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+{% endblock %}

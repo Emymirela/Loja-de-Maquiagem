@@ -1,0 +1,506 @@
+/* ===================================================
+   Importação de fonte moderna
+=================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ===================================================
+   Variáveis de design - Paleta Roxa & Lilás (Makeup Theme)
+=================================================== */
+:root {
+    --primary:          #8a4fff;       /* Roxo vibrante e elegante */
+    --primary-dark:     #6e33db;       /* Roxo profundo para hover e contrastes */
+    --primary-light:    #f3eaff;       /* Lilás bem suave para fundos de destaque */
+    --primary-lilac:    #c49eff;       /* Lilás médio para detalhes e bordas */
+    --primary-border:   #e8dbfb;       /* Borda suave com tonalidade lilás */
+    
+    --danger:           #e25569;
+    --danger-light:     #fef0f2;
+    --success:          #2ec4b6;
+    --success-light:    #eafaf8;
+    --warning:          #f4a261;
+    --warning-light:    #fff6ee;
+    
+    --text-main:        #231e33;       /* Grafite escuro com leve toque berinjela */
+    --text-muted:       #7d7591;       /* Cinza arroxeado suave */
+    --bg:               #f8f5fd;       /* Fundo geral esbranquiçado com leve toque lilás */
+    --surface:          #ffffff;       /* Branco puro para cards, navbar e formulários */
+    --border:           #eae1f5;       /* Bordas delicadas em lilás suave */
+    
+    --shadow-sm:        0 2px 8px rgba(110, 51, 219, 0.06);
+    --shadow-md:        0 8px 24px rgba(110, 51, 219, 0.09);
+    --shadow-hover:     0 6px 18px rgba(138, 79, 255, 0.32);
+    
+    --radius:           12px;
+    --radius-sm:        8px;
+    --radius-pill:      30px;
+    --transition:       0.2s ease-in-out;
+}
+
+/* ===================================================
+   Reset & Base
+=================================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    background-color: var(--bg);
+    color: var(--text-main);
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 700;
+    color: var(--text-main);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.6rem;
+}
+
+h1 { font-size: 1.85rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.25rem; }
+
+p {
+    color: var(--text-muted);
+    margin-bottom: 0.85rem;
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--transition);
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+/* ===================================================
+   Navbar (Lilás & Roxo)
+=================================================== */
+.navbar {
+    background: var(--surface) !important;
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    padding: 0.85rem 0;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--primary) !important;
+    letter-spacing: -0.03em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.navbar-brand:hover {
+    color: var(--primary-dark) !important;
+}
+
+.navbar-nav .nav-link {
+    color: var(--text-muted) !important;
+    font-weight: 600;
+    font-size: 0.92rem;
+    padding: 0.45rem 0.9rem !important;
+    border-radius: var(--radius-sm);
+    transition: background var(--transition), color var(--transition);
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    background: var(--primary-light);
+    color: var(--primary) !important;
+}
+
+.navbar-nav .nav-link.text-warning {
+    color: var(--danger) !important;
+}
+
+.navbar-nav .nav-link.text-warning:hover {
+    background: var(--danger-light);
+    color: var(--danger) !important;
+}
+
+.navbar-toggler {
+    border: 1px solid var(--border);
+    outline: none;
+    padding: 0.35rem 0.65rem;
+    border-radius: var(--radius-sm);
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 3px rgba(138, 79, 255, 0.2);
+}
+
+/* ===================================================
+   Container Principal
+=================================================== */
+.container.mt-4,
+.container.mt-5 {
+    max-width: 980px;
+}
+
+/* ===================================================
+   Alertas (flash messages)
+=================================================== */
+.alert {
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    font-size: 0.92rem;
+    font-weight: 500;
+    padding: 0.85rem 1.15rem;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1.25rem;
+}
+
+.alert-success {
+    background: var(--success-light);
+    border-color: #beece6;
+    color: #1a7f76;
+}
+
+.alert-danger {
+    background: var(--danger-light);
+    border-color: #fbd3d8;
+    color: #b5293d;
+}
+
+.alert-warning {
+    background: var(--warning-light);
+    border-color: #fde2ca;
+    color: #ad5f18;
+}
+
+.alert-info {
+    background: var(--primary-light);
+    border-color: var(--primary-border);
+    color: var(--primary-dark);
+}
+
+/* ===================================================
+   Formulários Modernos
+=================================================== */
+form {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2.2rem;
+    box-shadow: var(--shadow-sm);
+    max-width: 520px;
+    margin-top: 1rem;
+}
+
+form.d-inline,
+form.inline-form {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    max-width: none !important;
+    display: inline-block !important;
+    margin: 0 !important;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--text-main);
+    margin-bottom: 0.35rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    padding: 0.65rem 0.95rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 0.92rem;
+    color: var(--text-main);
+    background: #faf8fd;
+    transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+    outline: none;
+    margin-bottom: 1.2rem;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3.5px rgba(138, 79, 255, 0.18);
+    background: #ffffff;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 95px;
+}
+
+/* ===================================================
+   Botões (Roxo & Lilás)
+=================================================== */
+input[type="submit"],
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    padding: 0.6rem 1.35rem;
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    transition: background var(--transition), transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+input[type="submit"] {
+    background: var(--primary);
+    color: #ffffff;
+}
+
+input[type="submit"]:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-hover);
+}
+
+.btn-primary {
+    background: var(--primary) !important;
+    border-color: var(--primary) !important;
+    color: #ffffff !important;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark) !important;
+    border-color: var(--primary-dark) !important;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-hover);
+}
+
+.btn-secondary {
+    background: #f1e9fb !important;
+    border-color: var(--primary-border) !important;
+    color: var(--primary-dark) !important;
+}
+
+.btn-secondary:hover {
+    background: #e5d7f8 !important;
+    color: var(--primary-dark) !important;
+    transform: translateY(-1px);
+}
+
+.btn-warning {
+    background: #fff3db !important;
+    border-color: #ffe3a8 !important;
+    color: #a46104 !important;
+}
+
+.btn-warning:hover {
+    background: #ffe3a8 !important;
+    transform: translateY(-1px);
+}
+
+.btn-danger {
+    background: var(--danger-light) !important;
+    border-color: #fbc7ce !important;
+    color: var(--danger) !important;
+}
+
+.btn-danger:hover {
+    background: var(--danger) !important;
+    border-color: var(--danger) !important;
+    color: #ffffff !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(226, 85, 105, 0.3);
+}
+
+.btn-sm {
+    padding: 0.35rem 0.8rem !important;
+    font-size: 0.82rem !important;
+    font-weight: 600;
+}
+
+/* ===================================================
+   Tabelas (Destaque Lilás)
+=================================================== */
+.table {
+    background: var(--surface);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+    font-size: 0.92rem;
+    margin-bottom: 2rem;
+}
+
+.table thead th {
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    font-weight: 700;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: none;
+    padding: 0.95rem 1.1rem;
+    vertical-align: middle;
+}
+
+.table tbody td {
+    padding: 0.85rem 1.1rem;
+    vertical-align: middle;
+    border-color: var(--border);
+    color: var(--text-main);
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background: #fbf9fe;
+}
+
+.table tbody tr {
+    transition: background var(--transition);
+}
+
+.table tbody tr:hover {
+    background: #f5edff !important;
+}
+
+/* Badges e tags de Maquiagem */
+.badge-categoria {
+    display: inline-block;
+    padding: 0.28rem 0.65rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--primary-dark);
+    background: var(--primary-light);
+    border: 1px solid var(--primary-border);
+    border-radius: var(--radius-pill);
+    letter-spacing: 0.02em;
+}
+
+.badge-marca {
+    display: inline-block;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.badge-cor {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.84rem;
+    color: var(--text-muted);
+}
+
+.preco-destaque {
+    font-weight: 700;
+    color: var(--primary-dark);
+}
+
+/* ===================================================
+   Cards de Informação
+=================================================== */
+.card-dados {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: var(--shadow-sm);
+    max-width: 520px;
+}
+
+.card-dados p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-main);
+    margin-bottom: 0.8rem;
+    font-size: 0.95rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.card-dados p:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.card-dados strong {
+    color: var(--text-muted);
+    font-size: 0.84rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ===================================================
+   Hero & Seções Especiais
+=================================================== */
+.hero {
+    background: linear-gradient(135deg, #ffffff 0%, var(--primary-light) 100%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 3rem 2.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.hero h1 {
+    font-size: 2.2rem;
+    color: var(--primary-dark);
+}
+
+.hero p {
+    font-size: 1.05rem;
+    max-width: 620px;
+}
+
+/* ===================================================
+   Footer Suave
+=================================================== */
+body::after {
+    content: '';
+    display: block;
+    height: 60px;
+}
+
+/* ===================================================
+   Responsividade
+=================================================== */
+@media (max-width: 768px) {
+    .container.mt-4,
+    .container.mt-5 {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .table-responsive {
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+    }
+}
+
+@media (max-width: 576px) {
+    form {
+        padding: 1.4rem;
+    }
+
+    h1 { font-size: 1.6rem; }
+}

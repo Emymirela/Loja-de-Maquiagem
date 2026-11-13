@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Maquiagem{% endblock %}
+
+{% block content %}
+    <h1>💄 Editar Produto de Maquiagem</h1>
+    <p>Atualize as informações do item <strong>{{ produto.nome }}</strong>.</p>
+
+    <form action="" method="post">
+        <label for="nome">Nome do Produto:</label>
+        <input type="text" id="nome" name="nome" value="{{ produto.nome }}" required>
+
+        <label for="marca">Marca:</label>
+        <input type="text" id="marca" name="marca" value="{{ produto.marca or '' }}" required>
+
+        <label for="categoria">Categoria:</label>
+        <select id="categoria" name="categoria" required>
+            <option value="Lábios" {% if produto.categoria == 'Lábios' %}selected{% endif %}>Lábios (Batom, Gloss, Lip Tint)</option>
+            <option value="Rosto / Pele" {% if produto.categoria == 'Rosto / Pele' %}selected{% endif %}>Rosto / Pele (Base, Corretivo, Pó, Primer)</option>
+            <option value="Olhos" {% if produto.categoria == 'Olhos' %}selected{% endif %}>Olhos (Máscara de Cílios, Delineador, Sombra)</option>
+            <option value="Blush & Iluminador" {% if produto.categoria == 'Blush & Iluminador' %}selected{% endif %}>Blush & Iluminador</option>
+            <option value="Sobrancelhas" {% if produto.categoria == 'Sobrancelhas' %}selected{% endif %}>Sobrancelhas</option>
+            <option value="Pincéis & Acessórios" {% if produto.categoria == 'Pincéis & Acessórios' %}selected{% endif %}>Pincéis & Acessórios</option>
+            <option value="Skincare" {% if produto.categoria == 'Skincare' %}selected{% endif %}>Skincare & Preparação</option>
+            <option value="Outros" {% if produto.categoria == 'Outros' or not produto.categoria %}selected{% endif %}>Outros</option>
+        </select>
+
+        <label for="tom_cor">Tom / Cor:</label>
+        <input type="text" id="tom_cor" name="tom_cor" value="{{ produto.tom_cor or '' }}">
+
+        <label for="descricao">Descrição / Acabamento:</label>
+        <textarea id="descricao" name="descricao" rows="3">{{ produto.descricao or '' }}</textarea>
+
+        <div class="row">
+            <div class="col-md-6">
+                <label for="preco">Preço (R$):</label>
+                <input type="number" id="preco" name="preco" step="0.01" min="0" value="{{ produto.preco }}" required>
+            </div>
+            <div class="col-md-6">
+                <label for="quantidade">Qtd em Estoque:</label>
+                <input type="number" id="quantidade" name="quantidade" min="0" value="{{ produto.quantidade }}" required>
+            </div>
+        </div>
+
+        <div class="d-flex align-items-center gap-3 mt-3">
+            <input type="submit" value="Salvar Alterações">
+            <a href="{{ url_for('product.listar_produtos') }}" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+{% endblock %}

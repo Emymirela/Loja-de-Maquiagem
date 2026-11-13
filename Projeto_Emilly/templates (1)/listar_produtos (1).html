@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Produtos de Maquiagem{% endblock %}
+
+{% block content %}
+    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+        <div>
+            <h1 class="mb-1">💄 Produtos de Maquiagem</h1>
+            <p class="mb-0">Gerencie seu catálogo e estoque de cosméticos e maquiagens.</p>
+        </div>
+        <a href="{{ url_for('product.cadastrar_produto') }}" class="btn btn-primary">+ Nova Maquiagem</a>
+    </div>
+
+    {% if produtos %}
+        <div class="table-responsive">
+            <table class="table table-striped align-middle">
+                <thead>
+                    <tr>
+                        <th style="width: 50px;">#</th>
+                        <th>Produto</th>
+                        <th>Marca</th>
+                        <th>Categoria</th>
+                        <th>Tom / Cor</th>
+                        <th>Descrição</th>
+                        <th>Preço</th>
+                        <th>Estoque</th>
+                        <th style="width: 170px;">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for produto in produtos %}
+                    <tr>
+                        <td><strong>{{ produto.id }}</strong></td>
+                        <td>
+                            <strong>{{ produto.nome }}</strong>
+                        </td>
+                        <td>
+                            <span class="badge-marca">{{ produto.marca or '-' }}</span>
+                        </td>
+                        <td>
+                            <span class="badge-categoria">{{ produto.categoria or 'Outros' }}</span>
+                        </td>
+                        <td>
+                            <span class="badge-cor">{{ produto.tom_cor or '-' }}</span>
+                        </td>
+                        <td style="max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="{{ produto.descricao or '' }}">
+                            {{ produto.descricao or '-' }}
+                        </td>
+                        <td>
+                            <span class="preco-destaque">R$ {{ "%.2f"|format(produto.preco) }}</span>
+                        </td>
+                        <td>
+                            <span class="badge {% if produto.quantidade > 5 %}bg-light text-dark border{% else %}bg-danger-subtle text-danger border border-danger-subtle{% endif %} px-2 py-1 rounded">
+                                {{ produto.quantidade }} un
+                            </span>
+                        </td>
+                        <td>
+                            <a href="{{ url_for('product.editar_produto', produto_id=produto.id) }}" class="btn btn-sm btn-warning">Editar</a>
+                            <a href="{{ url_for('product.deletar_produto', produto_id=produto.id) }}"
+                               class="btn btn-sm btn-danger"
+                               onclick="return confirm('Tem certeza que deseja deletar este produto de maquiagem?')">Deletar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="card p-4 text-center border-0 shadow-sm" style="background: var(--surface);">
+            <p class="mb-2 fs-5">Nenhum produto de maquiagem cadastrado ainda.</p>
+            <div>
+                <a href="{{ url_for('product.cadastrar_produto') }}" class="btn btn-primary mt-2">Cadastre a primeira maquiagem!</a>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

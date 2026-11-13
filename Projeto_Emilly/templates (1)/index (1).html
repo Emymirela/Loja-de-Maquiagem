@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Início | Beauty Makeup{% endblock %}
+
+{% block content %}
+    <div class="hero">
+        <h1 class="mb-2">💄 Bem-vindo ao Beauty Makeup</h1>
+        <p class="mb-4">Seu sistema completo para controle de produtos, estoque e catálogo exclusivo de maquiagens e cosméticos.</p>
+        
+        {% if session.get('user_id') %}
+            <div class="d-flex gap-2 flex-wrap">
+                <a href="{{ url_for('product.listar_produtos') }}" class="btn btn-primary">Ver Catálogo de Maquiagens</a>
+                <a href="{{ url_for('product.cadastrar_produto') }}" class="btn btn-secondary">+ Cadastrar Maquiagem</a>
+            </div>
+        {% else %}
+            <div class="d-flex gap-2 flex-wrap">
+                <a href="{{ url_for('auth.login') }}" class="btn btn-primary">Acessar Conta</a>
+                <a href="{{ url_for('user.cadastro_usuario') }}" class="btn btn-secondary">Criar Cadastro</a>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="row g-4 mt-1">
+        <div class="col-md-4">
+            <div class="card p-3 h-100 border-0 shadow-sm" style="border-radius: var(--radius); background: var(--surface);">
+                <div class="fs-3 mb-2">✨</div>
+                <h5>Gestão de Maquiagens</h5>
+                <p class="mb-0 text-muted">Controle marcas renomadas, categorias (lábios, pele, olhos) e tons com precisão.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-3 h-100 border-0 shadow-sm" style="border-radius: var(--radius); background: var(--surface);">
+                <div class="fs-3 mb-2">📦</div>
+                <h5>Controle de Estoque</h5>
+                <p class="mb-0 text-muted">Acompanhe quantidades disponíveis e valores em tempo real para o seu negócio.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-3 h-100 border-0 shadow-sm" style="border-radius: var(--radius); background: var(--surface);">
+                <div class="fs-3 mb-2">🎨</div>
+                <h5>Design Lilás & Roxo</h5>
+                <p class="mb-0 text-muted">Interface visual moderna, elegante e pensada especialmente para o universo da beleza.</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
